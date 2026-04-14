@@ -1,0 +1,35 @@
+{
+  "name": "@prometheus/db-branching",
+  "version": "0.1.0",
+  "description": "Near-zero-cost instant metadata branching for Postgres databases. Schema-based copy-on-write isolation for AI agents.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "postgres",
+    "branching",
+    "copy-on-write",
+    "database",
+    "schema-isolation",
+    "ai-agents",
+    "mcp",
+    "insforge"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "pg": "^8.0.0",
+    "express": "^4.0.0 || ^5.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/pg": "^8.11.6",
+    "@types/node": "^20.14.0",
+    "typescript": "^5.5.0",
+    "express": "^4.21.0",
+    "pg": "^8.13.0"
+  }
+}
