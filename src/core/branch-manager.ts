@@ -14,7 +14,7 @@ import {
 } from '../types/branch.types';
 
 const SCHEMA_PREFIX = 'branch_';
-const NAME_PATTERN = /^[a-z0-9][a-z0-9_-]*$/;
+const NAME_PATTERN = /^[a-z][a-z0-9_-]*$/;
 
 export class BranchManager {
   constructor(
@@ -60,7 +60,7 @@ export class BranchManager {
       const result = await client.query(
         `INSERT INTO system.prometheus_branches
            (name, parent_id, parent_schema, branch_schema, state, fork_point_xid, created_by, metadata)
-         VALUES ($1, $2, $3, $4, 'active', pg_current_xact_id()::bigint, $5, $6)
+         VALUES ($1, $2, $3, $4, 'active', txid_current(), $5, $6)
          RETURNING *`,
         [
           name,

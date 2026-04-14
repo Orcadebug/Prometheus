@@ -122,11 +122,17 @@ export class MergeEngine {
       }
 
       // Apply migration SQL
-      // Split by statements and execute (skip empty lines and comments)
+      // Split by statements, strip comment lines, skip empty/transaction control
       const statements = migrationSql
         .split(';')
-        .map((s) => s.trim())
-        .filter((s) => s && !s.startsWith('--') && s !== 'BEGIN' && s !== 'COMMIT');
+        .map((s) =>
+          s
+            .split('\n')
+            .filter((line) => !line.trim().startsWith('--'))
+            .join('\n')
+            .trim()
+        )
+        .filter((s) => s && s !== 'BEGIN' && s !== 'COMMIT');
 
       for (const stmt of statements) {
         await client.query(stmt);
