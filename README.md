@@ -4,7 +4,7 @@
 
 Prometheus enables AI agents to safely fork a production database, test schema migrations or new features in isolation, and merge changes back — all without copying data upfront.
 
-Built for [InsForge](https://insforge.dev) | [GitHub](https://github.com/InsForge/insforge)
+
 
 ## How It Works
 
